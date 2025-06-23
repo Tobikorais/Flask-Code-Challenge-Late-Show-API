@@ -3,21 +3,17 @@ from ..models.user import User
 from ..app import db
 from flask_jwt_extended import create_access_token
 from datetime import datetime
+from ..middleware import validate_json, validate_schema, sanitize_input
 
 auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/register', methods=['POST'])
+@validate_json
+@validate_schema({'username': str, 'password': str})
+@sanitize_input
 def register():
     try:
         data = request.get_json()
-        if not data:
-            return jsonify({'error': 'No JSON data provided'}), 400
-
-        required_fields = ['username', 'password']
-        missing_fields = [field for field in required_fields if field not in data]
-        if missing_fields:
-            return jsonify({'error': f'Missing required fields: {", ".join(missing_fields)}'}), 400
-
         username = data['username']
         password = data['password']
 
@@ -41,17 +37,12 @@ def register():
         return jsonify({'error': 'Internal server error'}), 500
 
 @auth_bp.route('/login', methods=['POST'])
+@validate_json
+@validate_schema({'username': str, 'password': str})
+@sanitize_input
 def login():
     try:
         data = request.get_json()
-        if not data:
-            return jsonify({'error': 'No JSON data provided'}), 400
-
-        required_fields = ['username', 'password']
-        missing_fields = [field for field in required_fields if field not in data]
-        if missing_fields:
-            return jsonify({'error': f'Missing required fields: {", ".join(missing_fields)}'}), 400
-
         username = data['username']
         password = data['password']
 
