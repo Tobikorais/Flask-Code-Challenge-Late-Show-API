@@ -7,7 +7,7 @@ A Flask REST API for a Late Night TV show system using PostgreSQL, JWT authentic
 
 ### 1. Clone and Install Dependencies
 ```bash
-git clone https://github.com/luke/late-show-api-challenge.git
+git clone https://github.com/your-username/late-show-api-challenge.git
 cd late-show-api-challenge
 pipenv install flask flask_sqlalchemy flask_migrate flask-jwt-extended psycopg2-binary
 pipenv shell
@@ -235,12 +235,12 @@ Authorization: Bearer <your_jwt_token>
 - ⏳ **GitHub repo pushed and shared** - Ready for submission
 
 ## 🔗 GitHub Repository
-**Repository:** https://github.com/luke/late-show-api-challenge
+**Repository:** https://github.com/your-username/late-show-api-challenge
 
 ## 🚀 Quick Start
 ```bash
 # Clone and setup
-git clone https://github.com/luke/late-show-api-challenge.git
+git clone https://github.com/your-username/late-show-api-challenge.git
 cd late-show-api-challenge
 pipenv install
 pipenv shell
