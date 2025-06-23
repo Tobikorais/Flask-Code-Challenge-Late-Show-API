@@ -14,4 +14,11 @@ class Config:
     
     # Application Configuration
     DEBUG = os.environ.get("FLASK_DEBUG", False)
-    TESTING = os.environ.get("FLASK_TESTING", False) 
+    TESTING = os.environ.get("FLASK_TESTING", False)
+
+    # Rate Limiting Configuration
+    RATELIMIT_DEFAULT = "100 per minute"
+    RATELIMIT_STORAGE_URL = "memory://"
+    RATELIMIT_HEADERS_ENABLED = True
+    RATELIMIT_STRATEGY = 'fixed-window'
+    RATELIMIT_IN_MEMORY_FALLBACK_ENABLED = True 
